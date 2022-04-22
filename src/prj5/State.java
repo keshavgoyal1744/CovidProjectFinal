@@ -64,34 +64,30 @@ public class State {
 
 
     /**
-     * Private Sorting method which will help us to sort the data of state names
+     * Private Sorting method which will help us to sort the data of ethnicity names
      * in alphabetical order i.e. in ascending order. This method will be called
      * in SortAlpha method
      * 
-     * @param stateName
-     *            is the name of the state
+     * @param ethnicityName
+     *            is the name of the ethnicity
      * @param nameArray
-     *            is the array of all the names of the state.
+     *            is the array of all the names of the ethnicities.
      * @param begin
-     *            is the first positon of the array to start sorting from.
+     *            is the first position of the array to start sorting from.
      * @param end
-     *            is the last positon of the array to end sorting.
+     *            is the last position of the array to end sorting.
      */
-    private void InsertionSortAscending(
-
-        String stateName,
-        String[] nameArray,
-        int begin,
-        int end) {
+    private void InsertionSortAscending( String ethnicityName, String[] nameArray,
+        int begin, int end) {
         int index = end;
 
-        while ((index >= begin) && (stateName.compareTo(
+        while ((index >= begin) && (ethnicityName.compareTo(
             nameArray[index])) == -1) {
             nameArray[index + 1] = nameArray[index];
             index--;
         }
 
-        nameArray[index + 1] = stateName;
+        nameArray[index + 1] = ethnicityName;
     }
 
 
@@ -127,18 +123,14 @@ public class State {
      * @param end
      *            is the last positon of the array to end sorting.
      */
-    private void InsertionSortDescending(
-        int valueOfCFR,
-        int[] valuesArray,
-        int begin,
-        int end) {
+    private void InsertionSortDescending(int valueOfCFR, int[] valuesArray,
+        int begin, int end) {
 
         int index = end;
         while ((index >= begin) && (valueOfCFR < valuesArray[index])) {
             valuesArray[index] = valuesArray[index + 1];
             index--;
         }
-
         valuesArray[index + 1] = valueOfCFR;
     }
 

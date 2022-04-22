@@ -71,13 +71,13 @@ public class Race {
 
 
     /**
-     * This method calculates teh percentage of death among the number of Covid
+     * This method calculates the percentage of death among the number of Covid
      * cases
      * 
      * @return the percentage of death
      *         among Covid Cases in double format
      */
-    public double getPercentage() {
+    public double getRatio() {
 
         // If invalid value is provided return -1
         if (cases < 0 || deaths < 0) {
@@ -88,8 +88,8 @@ public class Race {
         // double ratio = (deaths / cases) * FINAL_PERCENT;
 
         // This will add % symbol after the digits
-// DecimalFormat percentDouble = new DecimalFormat(" #,##0.00 '%'");
-// System.out.println(percentDouble.format(ratio));
+        // DecimalFormat percentDouble = new DecimalFormat(" #,##0.00 '%'");
+        // System.out.println(percentDouble.format(ratio));
         double ratio = (((double)deaths / (double)cases)) * FINAL_PERCENT;
 
         String num = String.format("%,.1f", ratio);
@@ -112,7 +112,7 @@ public class Race {
         StringBuilder builder = new StringBuilder();
 
         // Taking value of the getPercentage method
-        String ratio = String.valueOf(getPercentage());
+        String ratio = String.valueOf(getRatio());
         ratio = ratio.replaceAll("\\.0*$", "");
 
         // Generating the string as required in given format
@@ -169,10 +169,10 @@ public class Race {
      */
     public int compareTo(Race other) {
 
-        if (this.getPercentage() > other.getPercentage()) {
+        if (this.getRatio() > other.getRatio()) {
             return 1;
         }
-        else if (this.getPercentage() < other.getPercentage()) {
+        else if (this.getRatio() < other.getRatio()) {
             return -1;
         }
         else {

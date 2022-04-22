@@ -26,8 +26,8 @@ public class CompareByCFR implements Comparator<Race> {
     public int compare(Race left, Race right) {
 
         // Getting both the values in percentage to compare
-        double leftCFR = left.getPercentage();
-        double rightCFR = right.getPercentage();
+        double leftCFR = left.getRatio();
+        double rightCFR = right.getRatio();
 
         // Compare if Left CFR is less than Right CFR and return -1
         if (leftCFR < rightCFR) {

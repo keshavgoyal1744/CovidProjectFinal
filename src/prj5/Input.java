@@ -35,9 +35,9 @@ public class Input {
             "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
         LinkedList<State> listOfStates = reader.getStates();
 
-        Node<State> currentNode = listOfStates.getNodeAt(0);
+        Node<State> currentNode = listOfStates.getFirstNode();
 
-        while (currentNode.getNext() != null) {
+        while (currentNode != null) {
             State currentState = currentNode.getData();
             LinkedList<Race> races = currentState.getRace();
 
@@ -47,6 +47,7 @@ public class Input {
             for (int i = 0; i <= 4; i++) {
                 System.out.println(races.getNodeAt(i).getData().toString());
             }
+
             System.out.println("=====");
 
             // Sorting races on the basis of their CFR in descending order
@@ -55,6 +56,7 @@ public class Input {
                 System.out.println(races.getNodeAt(i).getData().toString());
             }
             System.out.println("=====");
+
             currentNode = currentNode.getNext();
         }
     }

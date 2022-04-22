@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 import prj5.LinkedList.Node;
 
 /**
+ * This project uses a singly linked list
+ * 
  * @author Keshav Goyal, Sharanya Pathakota, Gabriel Holder
  * 
  * @version 4/21/2022
@@ -17,7 +19,7 @@ public class LinkedList<T> implements Iterable<T> {
     private int size;
 
     /**
-     * This is the default constructor for LinkedList class,
+     * This is the default constructor for Singly LinkedList class,
      * setting the first node to be null and the size of the LinkedList to
      * become zero.
      */
@@ -32,8 +34,8 @@ public class LinkedList<T> implements Iterable<T> {
      * 
      * @return the value of the firstNode i.e. the head.
      */
-    public T getFirstNode() {
-        return head.getData();
+    public Node<T> getFirstNode() {
+        return head;
     }
 
 
@@ -133,7 +135,7 @@ public class LinkedList<T> implements Iterable<T> {
             throw new IndexOutOfBoundsException();
         }
         if (index == 0) {
-            T itemRemoved = getFirstNode();
+            T itemRemoved = getFirstNode().getData();
             head = head.getNext();
             size--;
             return itemRemoved;
@@ -219,7 +221,7 @@ public class LinkedList<T> implements Iterable<T> {
         }
         T data = null;
         if (index == 0) {
-            data = getFirstNode();
+            data = getFirstNode().getData();
             head.setData(obj);
             return data;
         }
@@ -252,7 +254,7 @@ public class LinkedList<T> implements Iterable<T> {
             throw new IndexOutOfBoundsException();
         }
         if (index == 0) {
-            return getFirstNode();
+            return getFirstNode().getData();
         }
         Node<T> currNode = head;
         int count = 0;

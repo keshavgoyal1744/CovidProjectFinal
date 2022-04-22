@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class FileReader {
     private LinkedList<State> statesList;
     public static final int NUM_STATES = 6;
+    public static final String[] RACES = {"white", "black", "latinx", "asian", "other"};
 
     /**
      * Class constructor that takes one parameter i.e. the name of the file to
@@ -35,10 +36,10 @@ public class FileReader {
 
         // Scan the File
         Scanner file = new Scanner(new File(fileName));
-        String lineRead = "";
-        lineRead = file.nextLine();
+        String lineRead = file.nextLine();
 
-        for (int i = 0; i < NUM_STATES; i++) {
+        while (file.hasNextLine()) {
+        //for (int i = 0; i < NUM_STATES; i++) {
             LinkedList<Race> races = new LinkedList<Race>();
             lineRead = file.nextLine();
             String[] lineData = lineRead.split(", *");
@@ -46,34 +47,33 @@ public class FileReader {
 
             // Check for the data and store it in array of the value
             for (int j = 0; j < 5; j++) {
-                int value1 = checkNA(lineData[j + 1]);
-                int value2 = checkNA(lineData[j + 6]);
-                String raceName = "";
-                if (j == 0) {
-                    raceName = "white";
-                }
-                else if (j == 1) {
-                    raceName = "black";
-                }
-                else if (j == 2) {
-                    raceName = "latinx";
-                }
-                else if (j == 3) {
-                    raceName = "asian";
-                }
-                else {
-                    raceName = "other";
-                }
+                int numCases = checkNA(lineData[j + 1]);
+                int numDeaths = checkNA(lineData[j + 6]);
+//              String raceName = "";
+//                if (j == 0) {
+//                    raceName = "white";
+//                }
+//                else if (j == 1) {
+//                    raceName = "black";
+//                }
+//                else if (j == 2) {
+//                    raceName = "latinx";
+//                }
+//                else if (j == 3) {
+//                    raceName = "asian";
+//                }
+//                else {
+//                    raceName = "other";
+//                }
 
                 // Using the raceName from above and using it for Race class
-                Race race = new Race(raceName, value1, value2);
+                Race race = new Race(RACES[j], numCases, numDeaths);
                 races.add(race);
             }
             // Adding the data to the state class
             State state = new State(lineData[0], races);
             statesList.add(state);
         }
-
     }
 
 
