@@ -1,5 +1,11 @@
 package prj5;
 
+/**
+ * This tests the state class.
+ *
+ * @author Keshav Goyal, Sharanya Pathakota, Gabriel Holder
+ * @version 4/21/2022
+ */
 public class StateTest extends student.TestCase {
 
     private State state;
@@ -74,7 +80,8 @@ public class StateTest extends student.TestCase {
      */
     public void testSortAlpha() {
         String[] array4 = { "B", "A", "C", "Z", "M", "F", "T" };
-        state.SortAlpha(array4, 0, 6);
+        state.sortAlpha(array4, 0, 6);
+        assertEquals(state.getName(), "MD");
     }
 
 
@@ -86,7 +93,7 @@ public class StateTest extends student.TestCase {
         state.sortByCFR(array, 0, 2);
         int[] array2 = { 6, 7, 1, 0, -1 };
         state.sortByCFR(array2, 0, 4);
-
+        assertEquals(state.getName(), "MD");
     }
 
 }
