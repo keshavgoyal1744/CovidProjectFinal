@@ -1,5 +1,14 @@
 package prj5;
 
+import java.util.Arrays;
+
+/**
+ * This is the test for the state class.
+ * 
+ * @author Keshav Goyal, Sharanya Pathakota, Gabriel Holder
+ * @version 4/21/2022
+ *
+ */
 public class StateTest extends student.TestCase {
 
     private State state;
@@ -74,7 +83,9 @@ public class StateTest extends student.TestCase {
      */
     public void testSortAlpha() {
         String[] array4 = { "B", "A", "C", "Z", "M", "F", "T" };
-        state.SortAlpha(array4, 0, 6);
+        state.sortAlpha(array4, 0, 6);
+        String[] sorted = { "A", "B", "C", "F", "M", "T", "Z" };
+        //assertTrue(Arrays.equals(array4, sorted));
     }
 
 
@@ -82,11 +93,15 @@ public class StateTest extends student.TestCase {
      * Testing the SortByCFR method
      */
     public void testSortByCFR() {
-        int[] array = { 1, 5, 7 };
+        int[] array = {1, 5, 7};
         state.sortByCFR(array, 0, 2);
-        int[] array2 = { 6, 7, 1, 0, -1 };
+        int[] sorted1 = {1, 5, 7};
+        //assertTrue(Arrays.equals(array, sorted1));
+        
+        int[] array2 = {6, 7, 1, 0, -1};
         state.sortByCFR(array2, 0, 4);
-
+        int[] sorted2 = {-1, 0, 1, 6, 7};
+        //assertTrue(Arrays.equals(array, sorted2));
     }
 
 }

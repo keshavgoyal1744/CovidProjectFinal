@@ -5,17 +5,18 @@ import java.util.NoSuchElementException;
 import prj5.LinkedList.Node;
 
 /**
- * This project uses a singly linked list
- * 
- * @author Keshav Goyal, Sharanya Pathakota, Gabriel Holder
- * 
- * @version 4/21/2022
+ * This project uses a singly linked list.
  *
- * @param <T>
- *            is the LinkedList type i.e. its generic type
+ * @author Keshav Goyal, Sharanya Pathakota, Gabriel Holder
+ * @version 4/21/2022
+ * @param <T>            is the LinkedList type i.e. its generic type
  */
 public class LinkedList<T> implements Iterable<T> {
+    
+    /** The head. */
     private Node<T> head;
+    
+    /** The size. */
     private int size;
 
     /**
@@ -79,16 +80,16 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * Adds the object to the position in the list
-     * 
-     * @param index
-     *            where to add the object
-     * @param obj
-     *            the object to add
-     * @throws IndexOutOfBoundsException
-     *             if index is less than zero or greater than size
-     * @throws IllegalArgumentException
-     *             if obj is null
+     * Adds the object to the position in the list.
+     *
+     * @param index            
+     *              where to add the object
+     * @param obj            
+     *              the object to add
+     * @throws IndexOutOfBoundsException             
+     * if index is less than zero or greater than size
+     * @throws IllegalArgumentException             
+     *                          if obj is null
      */
     public void add(int index, T obj) {
         if (obj == null) {
@@ -122,18 +123,15 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * Removes the object at the given position
+     * Removes the object at the given position.
      *
-     * @param index
-     *            the position of the object
+     * @param index            
+     *              the position of the object
      * @return value in T format if the removal was successful
-     * @throws IndexOutOfBoundsException
-     *             if there is not an element at the index
+     * @throws IndexOutOfBoundsException             
+     *                  if there is not an element at the index
      */
     public T remove(int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
-        }
         if (index == 0) {
             T itemRemoved = getFirstNode().getData();
             head = head.getNext();
@@ -153,15 +151,15 @@ public class LinkedList<T> implements Iterable<T> {
             currentNode = currentNode.getNext();
             i++;
         }
-        return null;
+        throw new IndexOutOfBoundsException();
     }
 
 
     /**
-     * Removes the first instance of the given object from the list
+     * Removes the first instance of the given object from the list.
      *
-     * @param obj
-     *            the object to remove
+     * @param obj            
+     *          the object to remove
      * @return true if successful
      */
     public boolean remove(T obj) {
@@ -169,7 +167,7 @@ public class LinkedList<T> implements Iterable<T> {
         if (isEmpty()) {
             return false;
         }
-        if ((null != head) && (obj.equals(current.data))) {
+        if ((obj.equals(current.data))) {
             head = head.next;
             size--;
             return true;
@@ -193,7 +191,7 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * Removes all of the elements from the list
+     * Removes all of the elements from the list.
      */
     public void clear() {
         size = 0;
@@ -202,13 +200,13 @@ public class LinkedList<T> implements Iterable<T> {
     
     
     /**
-     * Gets the object at the given position
+     * Gets the object at the given position.
      *
-     * @param index
-     *            where the object is located
+     * @param index            
+     *              where the object is located
      * @return The object at the given position
-     * @throws IndexOutOfBoundsException
-     *             if no node at the given index
+     * @throws IndexOutOfBoundsException             
+     *              if no node at the given index
      */
     public T getEntry(int index) {
         Node<T> current = head;
@@ -230,7 +228,7 @@ public class LinkedList<T> implements Iterable<T> {
     
 
     /**
-     * Returns an array representation of the list
+     * Returns an array representation of the list.
      *
      * @return an array representing the list
      */
@@ -249,12 +247,12 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * Checks if the list contains the given object
+     * Checks if the list contains the given object.
      *
-     * @param obj
-     *            the object to check for
-     * @thrown IllegalArgumentException if the input onj is null.
+     * @param obj            
+     *          the object to check for
      * @return true if it contains the object
+     * @thrown IllegalArgumentException if the input onj is null.
      */
     public boolean contains(T obj) {
         if (obj == null) {
@@ -272,7 +270,7 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * Checks if the array is empty
+     * Checks if the array is empty.
      *
      * @return true if the array is empty
      */
@@ -282,7 +280,7 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * Returns a string representation of the list
+     * Returns a string representation of the list.
      *
      * @return a string representing the list
      */
@@ -307,10 +305,10 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * Returns true if both lists are the same
+     * Returns true if both lists are the same.
      *
-     * @param obj
-     *            the LinkedList object we need to compare.
+     * @param obj            
+     *          the LinkedList object we need to compare.
      * @return If two lists have the same contents
      */
     @SuppressWarnings("unchecked")
@@ -341,16 +339,14 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * This method will return the list in descending order of their CFR values
-     * 
-     * @param begin
-     *            the first index
-     * @param end
-     *            the last index
+     * This method will return the list in descending order of their CFR values.
+     *
+     * @param begin            
+     *              the first index
+     * @param end            
+     *              the last index
      * @return LinkedList will return the list of CFR values in descending order
      *         i.e. largest to smallest.
-     * 
-     * 
      */
     public LinkedList<Race> sortByCFR(int begin, int end) {
         CompareByCFR compareCFR = new CompareByCFR();
@@ -397,7 +393,7 @@ public class LinkedList<T> implements Iterable<T> {
      * @return LinkedList sorted in alphabetical order.
      * 
      */
-    public LinkedList<Race> sortByAlpha(int begin, int end) {
+    public LinkedList<Race> sortAlpha(int begin, int end) {
         CompareByAlpha comp1 = new CompareByAlpha();
         LinkedList<Race> tempList = new LinkedList<Race>();
         Object[] alphabetArray = toArray();
@@ -419,16 +415,24 @@ public class LinkedList<T> implements Iterable<T> {
 
     }
 
+    /**
+     * The Class Node.
+     *
+     * @param <D> the generic type
+     */
     public static class Node<D> {
 
+        /** The data. */
         private D data;
+        
+        /** The next. */
         private Node<D> next;
 
         /**
-         * Creates a new node with the given data
+         * Creates a new node with the given data.
          *
-         * @param d
-         *            the data to put inside the node
+         * @param d            
+         *          the data to put inside the node
          */
         public Node(D d) {
             data = d;
@@ -436,10 +440,10 @@ public class LinkedList<T> implements Iterable<T> {
 
 
         /**
-         * Sets the node after this node
+         * Sets the node after this node.
          *
-         * @param n
-         *            the node after this one
+         * @param n            
+         *          the node after this one
          */
         public void setNext(Node<D> n) {
             next = n;
@@ -468,7 +472,7 @@ public class LinkedList<T> implements Iterable<T> {
 
 
         /**
-         * Gets the data in the node
+         * Gets the data in the node.
          *
          * @return the data in the node
          */
@@ -479,13 +483,21 @@ public class LinkedList<T> implements Iterable<T> {
     }
 
 
+    /**
+     * The Class ListIterator.
+     *
+     * @param <A> the generic type
+     */
     private class ListIterator<A> implements Iterator<T> {
 
+        /** The next. */
         private Node<T> next;
+        
+        /** The called next. */
         private boolean calledNext;
 
         /**
-         * Creates a new ListIterator
+         * Creates a new ListIterator.
          */
         public ListIterator() {
             next = head;
@@ -494,7 +506,7 @@ public class LinkedList<T> implements Iterable<T> {
 
 
         /**
-         * Checks if there are more elements in the list
+         * Checks if there are more elements in the list.
          *
          * @return true if there are more elements in the list
          */
@@ -505,11 +517,11 @@ public class LinkedList<T> implements Iterable<T> {
 
 
         /**
-         * Gets the next value in the list
+         * Gets the next value in the list.
          *
          * @return the next value
-         * @throws NoSuchElementException
-         *             if there are no nodes left in the list
+         * @throws NoSuchElementException             
+         *              if there are no nodes left in the list
          */
         @Override
         public T next() {
@@ -523,6 +535,11 @@ public class LinkedList<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * Iterator.
+     *
+     * @return the iterator
+     */
     @Override
     public Iterator<T> iterator() {
         return new ListIterator<T>();

@@ -24,12 +24,9 @@ public class FileReader {
      *            the name of the file
      * @throws FileNotFoundException
      *             when the file is not found
-     * @throws CovidDataException
-     *             when there is some missing data
      */
     public FileReader(String fileName)
-        throws CovidDataException,
-        FileNotFoundException {
+        throws FileNotFoundException {
 
         // Use the List
         statesList = new LinkedList<State>();
@@ -39,11 +36,9 @@ public class FileReader {
         String lineRead = file.nextLine();
 
         while (file.hasNextLine()) {
-        //for (int i = 0; i < NUM_STATES; i++) {
             LinkedList<Race> races = new LinkedList<Race>();
             lineRead = file.nextLine();
             String[] lineData = lineRead.split(", *");
-            checkMissingData(lineData);
 
             // Check for the data and store it in array of the value
             for (int j = 0; j < 5; j++) {
@@ -69,29 +64,6 @@ public class FileReader {
     public LinkedList<State> getStates() {
 
         return statesList;
-    }
-
-
-    /**
-     * Helper method that checks if there is data missing and then throw an
-     * exception on the basis of that
-     * 
-     * @param array
-     *            an array of String values obtained from the file which is
-     *            being checked
-     * @throws CovidDataException
-     *             when a line in the file is missing data then throw
-     *             DataException
-     * 
-     */
-    private void checkMissingData(String[] array) throws CovidDataException {
-
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].isEmpty()) {
-                throw new CovidDataException(
-                    "There is some data missing from the input file");
-            }
-        }
     }
 
 

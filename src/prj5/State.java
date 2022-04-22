@@ -64,7 +64,8 @@ public class State {
 
 
     /**
-     * Private Sorting method which will help us to sort the data of ethnicity names
+     * Private Sorting method which will help us to sort 
+     * the data of ethnicity names
      * in alphabetical order i.e. in ascending order. This method will be called
      * in SortAlpha method
      * 
@@ -77,7 +78,8 @@ public class State {
      * @param end
      *            is the last position of the array to end sorting.
      */
-    private void InsertionSortAscending( String ethnicityName, String[] nameArray,
+    private void insertionSortAscending( String ethnicityName, 
+        String[] nameArray,
         int begin, int end) {
         int index = end;
 
@@ -103,10 +105,10 @@ public class State {
      * @param last
      *            is the last positon of the array to end sorting.
      */
-    public void SortAlpha(String[] names, int first, int last) {
+    public void sortAlpha(String[] names, int first, int last) {
 
         for (int i = first; i <= last; i++) {
-            InsertionSortAscending(names[i], names, first, i - 1);
+            insertionSortAscending(names[i], names, first, i - 1);
         }
     }
 
@@ -123,7 +125,7 @@ public class State {
      * @param end
      *            is the last positon of the array to end sorting.
      */
-    private void InsertionSortDescending(int valueOfCFR, int[] valuesArray,
+    private void insertionSortDescending(int valueOfCFR, int[] valuesArray,
         int begin, int end) {
 
         int index = end;
@@ -149,7 +151,7 @@ public class State {
     public void sortByCFR(int[] values, int first, int last) {
 
         for (int i = first; i <= last; i++) {
-            InsertionSortDescending(values[i], values, first, i - 1);
+            insertionSortDescending(values[i], values, first, i - 1);
         }
     }
 

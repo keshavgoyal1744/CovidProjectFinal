@@ -22,8 +22,7 @@ public class Input {
      * @throws FileNotFoundException
      *             when the file is not found
      */
-    public static void main(String[] args)
-        throws CovidDataException,
+    public static void main(String[] args) throws 
         FileNotFoundException {
         if (args.length == 1) {
             FileReader reader = new FileReader(args[0]);
@@ -36,7 +35,7 @@ public class Input {
                 LinkedList<Race> races = currentState.getRace();
 
                 // First printing data by sorting them in alphabetical order
-                races = races.sortByAlpha(0, 5);
+                races = races.sortAlpha(0, 5);
                 System.out.println(currentState.getName());
                 for (int i = 0; i <= 4; i++) {
                     System.out.println(races.getEntry(i).toString());
@@ -57,6 +56,5 @@ public class Input {
         else {
             new FileReader("Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
         }
-
     }
 }
