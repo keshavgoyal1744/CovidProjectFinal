@@ -49,22 +49,6 @@ public class FileReader {
             for (int j = 0; j < 5; j++) {
                 int numCases = checkNA(lineData[j + 1]);
                 int numDeaths = checkNA(lineData[j + 6]);
-//              String raceName = "";
-//                if (j == 0) {
-//                    raceName = "white";
-//                }
-//                else if (j == 1) {
-//                    raceName = "black";
-//                }
-//                else if (j == 2) {
-//                    raceName = "latinx";
-//                }
-//                else if (j == 3) {
-//                    raceName = "asian";
-//                }
-//                else {
-//                    raceName = "other";
-//                }
 
                 // Using the raceName from above and using it for Race class
                 Race race = new Race(RACES[j], numCases, numDeaths);

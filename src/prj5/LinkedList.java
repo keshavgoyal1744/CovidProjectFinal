@@ -165,23 +165,28 @@ public class LinkedList<T> implements Iterable<T> {
      * @return true if successful
      */
     public boolean remove(T obj) {
-        if (obj == null) {
-            throw new IllegalArgumentException();
+        Node<T> current = head;
+        if (isEmpty()) {
+            return false;
         }
-        if (head != null && head.getData().equals(obj)) {
-            head = head.getNext();
+        if ((null != head) && (obj.equals(current.data))) {
+            head = head.next;
             size--;
             return true;
         }
-        Node<T> currentNode = head;
-        while (size >= 2) {
-            if (currentNode.getNext().getData().equals(obj)) {
-                Node<T> tempNode = currentNode.getNext().getNext();
-                currentNode.setNext(tempNode);
+
+        while (getLength() >= 2 && (current.next != null)) {
+            if ((obj.equals(current.next.data))) {
+                if (current.next.next != null) {
+                    current.setNext(current.next.next);
+                }
+                else {
+                    current.setNext(null);
+                }
                 size--;
                 return true;
             }
-            currentNode = currentNode.getNext();
+            current = current.next;
         }
         return false;
     }
@@ -194,108 +199,35 @@ public class LinkedList<T> implements Iterable<T> {
         size = 0;
         head = null;
     }
-
-
+    
+    
     /**
-     * This method will replace a item at specific index with the item that is
-     * provided as the second parameter
-     * 
+     * Gets the object at the given position
+     *
      * @param index
-     *            the position the item needs to be replaced item the item we
-     *            wish to be replaced
-     * @param obj
-     *            is the value of the object that the previous value has to be
-     *            replaced with
+     *            where the object is located
+     * @return The object at the given position
      * @throws IndexOutOfBoundsException
-     *             the index is within the specific range
-     *             IllegalArgumentException the object
-     *             item is not set to be null.
-     * @return the object or the item to be replaced
-     */
-    public T replace(int index, T obj) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
-        }
-        if (obj == null) {
-            throw new IllegalArgumentException();
-        }
-        T data = null;
-        if (index == 0) {
-            data = getFirstNode().getData();
-            head.setData(obj);
-            return data;
-        }
-        Node<T> currentNode = head;
-        int count = 0;
-        while (currentNode.getNext() != null) {
-            if ((count + 1) == index) {
-                data = currentNode.getNext().getData();
-                currentNode.getNext().setData(obj);
-                break;
-            }
-            currentNode = currentNode.getNext();
-            count++;
-        }
-        return data;
-    }
-
-
-    /**
-     * This method will return the specific entry at the index provided
-     * 
-     * @param index
-     *            the number of position to get the entry from.
-     * @throws IndexOutOfBoundsException
-     *             the index is out of bounds
-     * @return the data at index position that is provided as parameter.
+     *             if no node at the given index
      */
     public T getEntry(int index) {
-        if (head == null || index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
-        }
-        if (index == 0) {
-            return getFirstNode().getData();
-        }
-        Node<T> currNode = head;
-        int count = 0;
+        Node<T> current = head;
+        int currentIndex = 0;
         T data = null;
-        while (currNode.getNext() != null) {
-            if ((count + 1) == index) {
-                data = currNode.getNext().getData();
+        while (current != null) {
+            if (currentIndex == index) {
+                data = current.data;
             }
-            currNode = currNode.getNext();
-            count++;
+            currentIndex++;
+            current = current.next;
+        }
+
+        if (data == null) {
+            throw new IndexOutOfBoundsException("Index exceeds the size.");
         }
         return data;
     }
-
-
-    /**
-     * This method will return the data of specific Node at the index provided
-     * 
-     * @param index
-     *            the index of the specific node
-     * @return the node corresponding to each index
-     */
-    public Node<T> getNodeAt(int index) {
-        if (head == null || index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
-        }
-        if (index == 0) {
-            return head;
-        }
-        Node<T> currentNode = head;
-        int i = 0;
-        while (currentNode.getNext() != null) {
-            if ((i + 1) == index) {
-                return currentNode.getNext();
-            }
-            currentNode = currentNode.getNext();
-            i++;
-        }
-        throw new IndexOutOfBoundsException();
-    }
-
+    
 
     /**
      * Returns an array representation of the list
@@ -593,8 +525,7 @@ public class LinkedList<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-
-        return null;
+        return new ListIterator<T>();
     }
 
 }

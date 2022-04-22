@@ -39,7 +39,7 @@ public class Input {
                 races = races.sortByAlpha(0, 5);
                 System.out.println(currentState.getName());
                 for (int i = 0; i <= 4; i++) {
-                    System.out.println(races.getNodeAt(i).getData().toString());
+                    System.out.println(races.getEntry(i).toString());
                 }
 
                 System.out.println("=====");
@@ -47,7 +47,7 @@ public class Input {
                 // Sorting races on the basis of their CFR in descending order
                 races = races.sortByCFR(0, 5);
                 for (int i = 0; i <= 4; i++) {
-                    System.out.println(races.getNodeAt(i).getData().toString());
+                    System.out.println(races.getEntry(i).toString());
                 }
                 System.out.println("=====");
 

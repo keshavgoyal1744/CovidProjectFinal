@@ -30,7 +30,7 @@ public class InputTest extends student.TestCase {
 //    @Hint("The main method is not working properly with input file "
 //        + "Cases_and_Deaths_by_race_CRDT_Sep2020.csv")
     public void testMain01() throws java.io.IOException, CovidDataException {
-        //Input.main(new String[] { "Cases_and_Deaths_by_race_CRDT_Sep2020.csv" });
+        Input.main(new String[] { "Cases_and_Deaths_by_race_CRDT_Sep2020.csv" });
         fileName = "CovidOutput_1.txt";
         String covidOutput_1 = "";
         fileData = null;
