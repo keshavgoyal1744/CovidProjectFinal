@@ -175,11 +175,13 @@ public class GUIWindow {
     }
     
     private void displayLabels(LinkedList<Race> races, int x, int y, int index) {
-            TextShape raceShape = new TextShape(x - WIDTH / 2, y - 20, races.getEntry(index).getName()); // !!
-            TextShape ratioShape = new TextShape(x - WIDTH / 2, y, races.getEntry(index).getRatio() + "%"); // !!
+            TextShape raceShape = new TextShape(x - WIDTH / 2, y - 20, races.getEntry(index).getName()); 
             
+            if (races.getEntry(index).getRatio() != -1.0) {
+                TextShape ratioShape = new TextShape(x - WIDTH / 2, y, races.getEntry(index).getRatio() + "%");
+                window.addShape(ratioShape);
+            }
             window.addShape(raceShape);
-            window.addShape(ratioShape);
     }
     
     public void clickedRepresentDC(Button representDC) {
