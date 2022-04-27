@@ -48,6 +48,14 @@ public class State {
 
         return this.race;
     }
+    
+    /**
+     * This method will set the list to a different one
+     * 
+     */
+    public void setRace(LinkedList<Race> other) {
+        race = other;
+    }
 
 
     /**

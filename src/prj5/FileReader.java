@@ -53,6 +53,8 @@ public class FileReader {
             State state = new State(lineData[0], races);
             statesList.add(state);
         }
+        //Makes the GUI and takes in the linked list of states from input file
+        GUIWindow window = new GUIWindow(statesList);
     }
 
 

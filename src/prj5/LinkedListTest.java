@@ -393,7 +393,7 @@ public class LinkedListTest extends student.TestCase {
         sorted.add(new Race("latinx", 2, 1));
         sorted.add(new Race("white", 2, 1));
         
-        assertEquals(race.sortByAlpha(0, 4), sorted);
+        assertEquals(race.sortAlpha(0, 4), sorted);
     }
     
     /**
