@@ -117,8 +117,7 @@ public class GUIWindow {
         }
     }
     
-    public void clickedSortAlpha(Button sortAlpha) {
-        sortAlphaList();
+    private void sortGraphing() {
         if (windowTitle.equals("DC Case Fatality Ratios by Race")) {
             clickedRepresentDC(representDC);
         } else if (windowTitle.equals("GA Case Fatality Ratios by Race")) {
@@ -134,21 +133,14 @@ public class GUIWindow {
         }
     }
     
+    public void clickedSortAlpha(Button sortAlpha) {
+        sortAlphaList();
+        sortGraphing();
+    }
+    
     public void clickedSortByCFR(Button sortByCFR) {
         sortCFRList();
-        if (windowTitle.equals("DC Case Fatality Ratios by Race")) {
-            clickedRepresentDC(representDC);
-        } else if (windowTitle.equals("GA Case Fatality Ratios by Race")) {
-            clickedRepresentGA(representGA);
-        } else if (windowTitle.equals("MD Case Fatality Ratios by Race")) {
-            clickedRepresentMD(representMD);
-        } else if (windowTitle.equals("NC Case Fatality Ratios by Race")) {
-            clickedRepresentNC(representNC);
-        } else if (windowTitle.equals("TN Case Fatality Ratios by Race")) {
-            clickedRepresentTN(representTN);
-        } else if (windowTitle.equals("VA Case Fatality Ratios by Race")) {
-            clickedRepresentVA(representVA);
-        }
+        sortGraphing();
     }
     
     private void windowTitle(String stateName) {
