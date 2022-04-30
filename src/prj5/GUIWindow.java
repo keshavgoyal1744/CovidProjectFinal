@@ -217,7 +217,7 @@ public class GUIWindow {
     private void displayRaces(LinkedList<Race> races) {
         //First variable splits the window into six equal spacings for graphs
         //Second variable is multiplied to the xCoord to get the correct spacing
-        int xCoord = window.getGraphPanelWidth() / 6;
+        int xCoord = window.getGraphPanelWidth() / states.getLength();
         int xMultiplier = 1;
         
         for (int i = 0; i < races.getLength(); i++) {
