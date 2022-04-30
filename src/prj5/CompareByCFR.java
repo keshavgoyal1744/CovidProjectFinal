@@ -37,10 +37,9 @@ public class CompareByCFR implements Comparator<Race> {
             return -1;
         }
 
-        // Check if both CFR are equal and then compare on the basis of name of
-        // races to break the tie.
+        // Check if both CFR are equal and return 0
         else if (leftCFR == rightCFR) {
-            return left.getName().compareTo(right.getName());
+            return 0;
         }
 
         // Compare if Left CFR is more than Right CFR and return 1

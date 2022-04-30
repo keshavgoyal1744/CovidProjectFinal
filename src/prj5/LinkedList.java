@@ -378,10 +378,9 @@ public class LinkedList<T> implements Iterable<T> {
                 }
                 // if both the CFR values are same then arrange them
                 // alphabetically
-                if (compareCFR.compare(cfr1, cfr2) != -1 && compareCFR.compare(
-                    cfr1, cfr2) != 1) {
+                if (compareCFR.compare(cfr1, cfr2) == 0) {
                     CompareByAlpha compareAlpha = new CompareByAlpha();
-                    if (compareAlpha.compare(cfr1, cfr2) < 0) {
+                    if (compareAlpha.compare(cfr1, cfr2) > 0) {
                         Object temp = cfr[j];
                         cfr[j] = cfr[j + 1];
                         cfr[j + 1] = temp;
@@ -389,13 +388,11 @@ public class LinkedList<T> implements Iterable<T> {
                 }
             }
         }
-
         for (int k = 0; k < cfr.length; k++) {
             list.add((Race)cfr[k]);
         }
         return list;
     }
-
 
     /**
      * This method helps to sort the list according to the alphabetical order.

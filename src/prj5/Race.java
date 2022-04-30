@@ -89,12 +89,7 @@ public class Race {
             return -1;
         }
 
-        // Calculate the ratio i.e CFR (deaths/cases) * 100
-        // double ratio = (deaths / cases) * FINAL_PERCENT;
-
-        // This will add % symbol after the digits
-        // DecimalFormat percentDouble = new DecimalFormat(" #,##0.00 '%'");
-        // System.out.println(percentDouble.format(ratio));
+        // Calculate the ratio i.e CFR 
         double ratio = (((double)deaths / (double)cases)) * FINAL_PERCENT;
 
         String num = String.format("%,.1f", ratio);
