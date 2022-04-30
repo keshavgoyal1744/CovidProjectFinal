@@ -351,7 +351,9 @@ public class LinkedList<T> implements Iterable<T> {
 
 
     /**
-     * This method will return the list in descending order of their CFR values
+     * This method will return the list in descending order of their CFR values.
+     * As instructed if the values are the same or the values are NA then they
+     * will arrange in alphabetical order.
      *
      * @param begin
      *            the first index
@@ -363,9 +365,11 @@ public class LinkedList<T> implements Iterable<T> {
      *
      */
     public LinkedList<Race> sortByCFR(int begin, int end) {
+        // Making the compareCFR object
         CompareByCFR compareCFR = new CompareByCFR();
         LinkedList<Race> list = new LinkedList<Race>();
         Object[] cfr = toArray();
+        // Going through the whole array to check the values
         for (int i = begin; i <= end; i++) {
             for (int j = 0; j < cfr.length - 1; j++) {
                 Race cfr1 = (Race)cfr[j];
@@ -379,6 +383,8 @@ public class LinkedList<T> implements Iterable<T> {
                 // if both the CFR values are same then arrange them
                 // alphabetically
                 if (compareCFR.compare(cfr1, cfr2) == 0) {
+                    // making the compareAlpha object i.e. if the CFR values are
+                    // equals
                     CompareByAlpha compareAlpha = new CompareByAlpha();
                     if (compareAlpha.compare(cfr1, cfr2) > 0) {
                         Object temp = cfr[j];
@@ -388,14 +394,17 @@ public class LinkedList<T> implements Iterable<T> {
                 }
             }
         }
+        // Adding elements to the final list
         for (int k = 0; k < cfr.length; k++) {
             list.add((Race)cfr[k]);
         }
         return list;
     }
 
+
     /**
      * This method helps to sort the list according to the alphabetical order.
+     * From the smallest to the greatest.
      *
      * @param begin
      *            the first index
@@ -405,9 +414,11 @@ public class LinkedList<T> implements Iterable<T> {
      *
      */
     public LinkedList<Race> sortAlpha(int begin, int end) {
+        // Making the compare by alpha object
         CompareByAlpha comp1 = new CompareByAlpha();
         LinkedList<Race> tempList = new LinkedList<Race>();
         Object[] alphabetArray = toArray();
+        // Going through the whole array to check the values
         for (int i = begin; i <= end; i++) {
             for (int j = 0; j < size - 1; j++) {
                 Race alphabet1 = (Race)alphabetArray[j];
@@ -419,6 +430,7 @@ public class LinkedList<T> implements Iterable<T> {
                 }
             }
         }
+        // Adding elements to the final list
         for (int k = 0; k < alphabetArray.length; k++) {
             tempList.add((Race)alphabetArray[k]);
         }
